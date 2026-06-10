@@ -12,9 +12,9 @@ usersRouter.post("/register", registerValidation, async (req, res) => {
 
     try {
         const newUser: CreateUser = { firstname: firstname, lastname: lastname, email: email, password: password }
-        
+
         const response = await usersService.register(newUser)
-        
+
         if (!response.success) {
             res.status(400).send(response)
         } else {
@@ -27,17 +27,23 @@ usersRouter.post("/register", registerValidation, async (req, res) => {
 
 usersRouter.post("/login", async (req, res) => {
     const { email, password } = req.body;
-
+    
     try {
         const response = await usersService.login(email, password)
-        console.log(response)
-        if(!response.success) {
-            if(response.error == ErrorType.UserNotFound) {
-                res.status(404).send('user not found')
+        
+        if (!response.success) {
+            if (response.error == ErrorType.UserNotFound) {
+                res.status(404).send({
+                    error: ErrorType.UserNotFound,
+                    message: 'User not found'
+                })
             }
-            else if(response.error == ErrorType.InvalidPassword) {
-                res.status(400).send('invalid password')
-            } 
+            else if (response.error == ErrorType.InvalidPassword) {
+                res.status(400).send({
+                    error: ErrorType.InvalidPassword,
+                    message: 'Invalid password'
+                })
+            }
         } else {
             res.cookie('userToken', response.data.accessToken, { httpOnly: true })
             res.status(200).send(response)
@@ -83,7 +89,7 @@ usersRouter.put("/users/update/:userId", tokenValidation, async (req: any, res: 
     try {
         const userId = parseInt(req.params.userId)
         const { firstname, lastname, email } = req.body
-        
+
         const updateUser: UpdateUser = {
             firstname: firstname,
             lastname: lastname,
@@ -101,7 +107,7 @@ usersRouter.put("/users/update/:userId", tokenValidation, async (req: any, res: 
 usersRouter.delete("/users/delete/:userId", tokenValidation, async (req: any, res: any) => {
     try {
         const userId = parseInt(req.params.userId)
-        
+
         const response = await usersService.deleteUser(userId)
 
         res.status(200).send(response)
