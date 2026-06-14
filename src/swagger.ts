@@ -31,7 +31,7 @@ const definition: swaggerJsdoc.OAS3Definition = {
                 required: ['email', 'password', 'firstname', 'lastname'],
                 properties: {
                     email: { type: 'string', format: 'email' },
-                    password: { type: 'string', minLength: 4 },
+                    password: { type: 'string', minLength: 8, maxLength: 12, example: 'zaq1@WSXZ', description: 'Must include a letter, a number, and a special character (@$!%*#?&)' },
                     firstname: { type: 'string', minLength: 2 },
                     lastname: { type: 'string', minLength: 2 },
                 },
