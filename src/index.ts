@@ -5,6 +5,8 @@ import helmet from "helmet"
 import { PORT } from "./consts";
 import routers from "./routers"
 import cookieParser from 'cookie-parser';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec, swaggerUiOptions } from './swagger';
 
 const app: Express = express();
 
@@ -26,6 +28,12 @@ app.use(bodyParser.json({ limit: '1mb' }))
 
 app.get("/", (req: Request, res: Response) => {
     res.send("Express + TypeScript Server");
+});
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOptions));
+app.get('/api-docs.json', (_req: Request, res: Response) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec);
 });
 
 app.use('/api', routers)

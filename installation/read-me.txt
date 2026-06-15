@@ -11,3 +11,13 @@ for database:
 2. run 2 command:
     5.1 npx prisma db pull
     5.2 npx prisma generate
+<<<<<<< HEAD
+=======
+6. npm run dev
+
+
+for swagger:
+1. http://localhost:3000/api-docs
+2. update the correct port in swagger.ts file
+    - servers: [{ url: 'http://localhost:{PORT}/api' }],
+>>>>>>> c7eb357d71b038cf6e988b3259ac49dc47630ebd
