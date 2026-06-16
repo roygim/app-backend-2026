@@ -4,6 +4,7 @@ import { ErrorType, ResponseObj, User } from "../types";
 import { CreateUser, UpdateUser } from "../types/dto";
 import * as usersRepository from "../repository/users.repository";
 import { JWT_SECRET_KEY } from '../consts';
+import crypto from 'crypto'
 
 export const getAll = async (): Promise<ResponseObj<User[]>> => {
     try {
@@ -66,7 +67,10 @@ export const login = async (email: string, password: string): Promise<ResponseOb
 
             delete (user as { password?: string }).password
 
-            const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET_KEY)
+            const key = crypto.createHash('sha256').update(JWT_SECRET_KEY, 'utf8').digest()
+
+            const accessToken = jwt.sign({ userId: user.id }, key, { algorithm: 'HS256' })
+            // const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET_KEY)
 
             return {
                 success: true,
