@@ -12,6 +12,6 @@
 
 
 for swagger:
-1. http://localhost:3000/api-docs
+1. http://localhost:4002/api-docs
 2. update the correct port in swagger.ts file
     - servers: [{ url: 'http://localhost:{PORT}/api' }],

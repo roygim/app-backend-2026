@@ -7,7 +7,7 @@ const definition: swaggerJsdoc.OAS3Definition = {
         version: '1.0.0',
         description: 'User management API',
     },
-    servers: [{ url: 'http://localhost:3000/api' }],
+    servers: [{ url: 'http://localhost:4002/api' }],
     components: {
         securitySchemes: {
             cookieAuth: {
