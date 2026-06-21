@@ -46,14 +46,14 @@ Three-layer architecture: **Router → Service → Repository**
 
 ## API Endpoints
 
-All routes are prefixed with `/api`:
+All routes are prefixed with `/api/users`:
 
 | Method | Path | Auth | Description |
 |--------|------|------|-------------|
 | GET | `/users` | No | Get all users |
-| POST | `/register` | No | Create user (Zod-validated) |
-| POST | `/login` | No | Login, sets `userToken` cookie |
-| DELETE | `/logout` | No | Clears `userToken` cookie |
-| POST | `/loaduser` | Yes | Get current user from token |
+| POST | `/users/register` | No | Create user (Zod-validated) |
+| POST | `/users/login` | No | Login, sets `userToken` cookie |
+| DELETE | `/users/logout` | No | Clears `userToken` cookie |
+| POST | `/users/loaduser` | Yes | Get current user from token |
 | PUT | `/users/update/:userId` | Yes | Update user fields |
 | DELETE | `/users/delete/:userId` | Yes | Delete user |

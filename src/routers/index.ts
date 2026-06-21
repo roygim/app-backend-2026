@@ -15,6 +15,6 @@ const routers = Router()
  */
 routers.get('/healthz', (req, res) => { return res.status(200).json('ok') })
 
-routers.use(usersRouter)
+routers.use('/users', usersRouter)
 
 export default routers

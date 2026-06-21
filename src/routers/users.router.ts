@@ -9,7 +9,7 @@ const usersRouter = Router()
 
 /**
  * @swagger
- * /register:
+ * /users/register:
  *   post:
  *     tags: [Users]
  *     summary: Register a new user
@@ -57,7 +57,7 @@ usersRouter.post("/register", registerValidation, async (req, res) => {
 
 /**
  * @swagger
- * /login:
+ * /users/login:
  *   post:
  *     tags: [Users]
  *     summary: Login and receive userToken cookie
@@ -122,7 +122,7 @@ usersRouter.post("/login", async (req, res) => {
 
 /**
  * @swagger
- * /logout:
+ * /users/logout:
  *   delete:
  *     tags: [Users]
  *     summary: Clear userToken cookie
@@ -152,7 +152,7 @@ usersRouter.delete("/logout", async (req, res) => {
 
 /**
  * @swagger
- * /loaduser:
+ * /users/loaduser:
  *   post:
  *     tags: [Users]
  *     summary: Get current user from token cookie
@@ -186,7 +186,7 @@ usersRouter.post("/loaduser", tokenValidation, async (req: any, res: any) => {
 
 /**
  * @swagger
- * /users:
+ * /users/all:
  *   get:
  *     tags: [Users]
  *     summary: Get all users
@@ -204,7 +204,7 @@ usersRouter.post("/loaduser", tokenValidation, async (req: any, res: any) => {
  *                   items:
  *                     $ref: '#/components/schemas/User'
  */
-usersRouter.get("/users", async (req, res) => {
+usersRouter.get("/all", async (req, res) => {
     try {
         const users = await usersService.getAll()
         res.status(200).send(users);
@@ -249,7 +249,7 @@ usersRouter.get("/users", async (req, res) => {
  *       403:
  *         description: Invalid or expired token
  */
-usersRouter.put("/users/update/:userId", tokenValidation, async (req: any, res: any) => {
+usersRouter.put("/update/:userId", tokenValidation, async (req: any, res: any) => {
     try {
         const userId = parseInt(req.params.userId)
         const { firstname, lastname, email } = req.body
@@ -296,7 +296,7 @@ usersRouter.put("/users/update/:userId", tokenValidation, async (req: any, res: 
  *       403:
  *         description: Invalid or expired token
  */
-usersRouter.delete("/users/delete/:userId", tokenValidation, async (req: any, res: any) => {
+usersRouter.delete("/delete/:userId", tokenValidation, async (req: any, res: any) => {
     try {
         const userId = parseInt(req.params.userId)
 
