@@ -3,7 +3,7 @@ import swaggerJsdoc from 'swagger-jsdoc';
 const definition: swaggerJsdoc.OAS3Definition = {
     openapi: '3.0.3',
     info: {
-        title: 'App Backend API',
+        title: 'App Backend API - Nodejs',
         version: '1.0.0',
         description: 'User management API',
     },
