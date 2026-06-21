@@ -252,12 +252,11 @@ usersRouter.get("/all", async (req, res) => {
 usersRouter.put("/update/:userId", tokenValidation, async (req: any, res: any) => {
     try {
         const userId = parseInt(req.params.userId)
-        const { firstname, lastname, email } = req.body
+        const { firstname, lastname } = req.body
 
         const updateUser: UpdateUser = {
             firstname: firstname,
-            lastname: lastname,
-            email: email
+            lastname: lastname
         }
 
         const response = await usersService.update(userId, updateUser)

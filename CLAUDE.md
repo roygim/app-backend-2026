@@ -50,7 +50,7 @@ All routes are prefixed with `/api/users`:
 
 | Method | Path | Auth | Description |
 |--------|------|------|-------------|
-| GET | `/users` | No | Get all users |
+| GET | `/users/all` | No | Get all users |
 | POST | `/users/register` | No | Create user (Zod-validated) |
 | POST | `/users/login` | No | Login, sets `userToken` cookie |
 | DELETE | `/users/logout` | No | Clears `userToken` cookie |

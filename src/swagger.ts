@@ -49,7 +49,6 @@ const definition: swaggerJsdoc.OAS3Definition = {
                 properties: {
                     firstname: { type: 'string' },
                     lastname: { type: 'string' },
-                    email: { type: 'string', format: 'email' },
                 },
             },
             ResponseError: {

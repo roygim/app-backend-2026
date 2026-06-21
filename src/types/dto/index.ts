@@ -8,5 +8,4 @@ export interface CreateUser {
 export interface UpdateUser {
     firstname?: string;
     lastname?: string;
-    email?: string;
 }
