@@ -68,4 +68,6 @@ export const swaggerSpec = swaggerJsdoc({
     apis: ['./src/routers/*.ts'],
 });
 
-export const swaggerUiOptions = {};
+export const swaggerUiOptions = {
+    customSiteTitle: 'Swagger UI - Nodejs',
+};
